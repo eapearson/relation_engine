@@ -1,7 +1,8 @@
 """
 Tests for the Dan Jacobson ORNL Arabidopsis stored queries.
 
-These tests run within the re_api docker image, and require access to the ArangoDB, auth, and workspace images.
+These tests run within the re_api docker image, and require access to the ArangoDB,
+auth, and workspace images.
 """
 import json
 import unittest
@@ -125,7 +126,10 @@ class Test_DJORNL_Stored_Queries(unittest.TestCase):
     # edges are objects with keys _to, _from, edge_type and score
 
     def test_fetch_all(self):
-        """Ensure that data returned by the fetch all query has all the information that we expect"""
+        """
+        Ensure that data returned by the fetch all query has all the information that
+        we expect
+        """
         response = self.test_expected_results(
             "djornl_fetch_all", self.json_data["queries"]["djornl_fetch_all"][0]
         )

@@ -1,9 +1,9 @@
 """
 Test JSON validation functions
 
-The majority of the validation tests use `test_schema`, defined below and replicated as
-JSON and YAML files. The tests are run with files and data structures for both the schema
-and the data to be validated to ensure that all formats function the same.
+The majority of the validation tests use `test_schema`, defined below and replicated
+as JSON and YAML files. The tests are run with files and data structures for both the
+schema and the data to be validated to ensure that all formats function the same.
 
 Test data files are in relation_engine_server/test/data/json_validation
 
@@ -131,7 +131,9 @@ invalid_edge_data = {
 
 class TestJsonValidation(unittest.TestCase):
     def test_non_validation_validator_errors(self):
-        """test errors in the validator that are unrelated to the validation functionality"""
+        """
+        test errors in the validator that are unrelated to the validation functionality
+        """
 
         err_str = "Please supply either a schema or a schema file path"
         with self.assertRaisesRegex(ValueError, err_str):
@@ -271,7 +273,8 @@ class TestJsonValidation(unittest.TestCase):
                     "distance": 3,
                 },
                 "file": "invalid_pattern",
-                "err_str": r'"what\'s-the-problem with-this-string\?" does not match .*?',
+                "err_str": r'"what\'s-the-problem with-this-string\?" does not match '
+                r".*?",
             },
             {
                 "input": {"name": "No_problem_with_this_string", "distance": 3},
@@ -348,7 +351,7 @@ class TestJsonValidation(unittest.TestCase):
 
         self.execute_tests(schema_arg, schema_file_arg, tests)
 
-        # pyyaml-specific issue: dates get automatically parsed into datetime objects (doh!)
+        # pyyaml-specific issue: dates get automatically parsed into datetime objects
         file_path = os_path.join(json_validation_dir, "unquoted_date.yaml")
         err_str = r"datetime.date\(2020, 6, 6\) is not of type 'string'"
         with self.assertRaisesRegex(ValidationError, err_str):
@@ -363,8 +366,8 @@ class TestJsonValidation(unittest.TestCase):
         """
         check array validation and default population works correctly when refs are used
 
-        The current implementation of the population of defaults does not allow defaults to be
-        populated if the property is a reference, i.e.
+        The current implementation of the population of defaults does not allow defaults
+        to be populated if the property is a reference, i.e.
 
         'properties': {
             'fruits': {
@@ -419,7 +422,9 @@ class TestJsonValidation(unittest.TestCase):
         test_schema["properties"]["params"]["properties"]["fruits"] = fruits_explicit
 
     def test_schema_references(self):
-        """Ensure referenced schemas, including those written in yaml, can be accessed."""
+        """
+        Ensure referenced schemas, including those written in yaml, can be accessed.
+        """
 
         # same schema in different places
         path_list = [[], ["level_1"], ["level_1", "level_2"]]
@@ -456,7 +461,8 @@ class TestJsonValidation(unittest.TestCase):
                         )
 
                     # if there is no $id in the schema, the ref resolver won't know
-                    # where the schema file is located and will not resolve relative references
+                    # where the schema file is located and will not resolve relative
+                    # references
                     with self.assertRaisesRegex(
                         RefResolutionError, "No such file or directory"
                     ):

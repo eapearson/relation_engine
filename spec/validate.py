@@ -41,8 +41,8 @@ def validate_all(schema_type, directory=None):
 
     :param schema_type: (string)  the schema type to validate
     :param directory:   (string)  the directory to look in.
-                                  If not specified, the default directory for the schema_type
-                                  will be used.
+                                  If not specified, the default directory for the
+                                  schema_type will be used.
     """
     if schema_type not in _VALID_SCHEMA_TYPES.keys():
         raise ValueError(f"No validation schema found for '{schema_type}'")
@@ -92,13 +92,13 @@ def validate_all_by_type(validation_base_dir=None):
     """
     Validate the syntax of all schemas of all types in validation_base_dir
 
-    Assumes that the schemas will be set up in parent directories named with the plural form
-    of the schema type name, i.e. all collection schemas in the 'collections' dir, all views
-    in the 'views' dir, etc.
+    Assumes that the schemas will be set up in parent directories named with the plural
+    form of the schema type name, i.e. all collection schemas in the 'collections' dir,
+    all views in the 'views' dir, etc.
 
     :param validation_base_dir:   (string) the directory to look in.
-                                  If not specified, the default directory from the config
-                                  will be used
+                                  If not specified, the default directory from the
+                                  config will be used
 
     :return n_errors:             (int) the number of errors encountered
 
@@ -146,7 +146,8 @@ def validate_collection(path):
 
     # Make sure it can be used as a JSON schema
     # If the schema is invalid, a SchemaError will get raised
-    # Otherwise, the schema will work and a ValidationError will get raised (what we want)
+    # Otherwise, the schema will work and a ValidationError will get raised (what we
+    # want)
     try:
         run_validator(data={}, schema=data["schema"])
     except ValidationError:

@@ -1,7 +1,8 @@
 """
 JSON Schema validation
 
-See the docs on adding default values: https://python-jsonschema.readthedocs.io/en/stable/faq/
+See the docs on adding default values:
+https://python-jsonschema.readthedocs.io/en/stable/faq/
 
 Example usage:
 
@@ -46,8 +47,8 @@ def get_schema_validator(schema=None, schema_file=None, validate_at=""):
     :param schema:      (dict)    the schema as a data structure
     :param schema_file: (string)  path to the schema file (json or yaml format)
 
-    :param validate_at: (string)  where in the data structure the schema to validate against
-                                  is located, in JSON pointer syntax
+    :param validate_at: (string)  where in the data structure the schema to validate
+                                  against is located, in JSON pointer syntax
                                   defaults to the root of the schema object if not set
 
     only one of `schema` and `schema_file` should be supplied
@@ -96,8 +97,8 @@ def run_validator(
     :param schema:      (dict)    the schema as a data structure
     :param schema_file: (string)  path to the schema file (json or yaml format)
 
-    :param validate_at: (string)  where in the data structure the schema to validate against
-                                  is located, in JSON pointer syntax
+    :param validate_at: (string)  where in the data structure the schema to validate
+                                  against is located, in JSON pointer syntax
                                   defaults to the root of the schema object if not set
 
     :param data:        (*)       data to validate

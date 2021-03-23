@@ -26,7 +26,8 @@ class REClient:
         Params:
             query - string - AQL query to execute
             bind_vars - dict - JSON serializable bind variables for the query
-            raise_not_found - bool - Whether to raise an error if there are zero results. Defaults to False
+            raise_not_found - bool - Whether to raise an error if there are zero
+                results. Defaults to False
         Exceptions raised:
             RERequestError - 400-499 error from the RE API
             REServerError - 500+ error from the RE API
@@ -57,8 +58,10 @@ class REClient:
         Run a stored query.
         Params:
             stored_query - string - name of the stored query to execute
-            bind_vars - JSON serializable - bind variables for the query (JSON serializable)
-            raise_not_found - bool - Whether to raise an error if there are zero results. Defaults to False
+            bind_vars - JSON serializable - bind variables for the query (JSON
+                serializable)
+            raise_not_found - bool - Whether to raise an error if there are zero
+                results. Defaults to False
         Exceptions raised:
             RERequestError - 400-499 from the RE API (client error)
             REServerError - 500+ error from the RE API
@@ -95,8 +98,8 @@ class REClient:
         Params:
             coll - str - collection name to save to
             docs - a single dict or list of dicts - json-serializable documents to save
-            on_duplicate - str (defaults to 'error') - what to do when a provided document
-                already exists in the collection. See options here:
+            on_duplicate - str (defaults to 'error') - what to do when a provided
+                document already exists in the collection. See options here:
                 https://github.com/kbase/relation_engine_api#put-apiv1documents
             display_errors - bool (defaults to False) - whether to respond with
                 document save errors (the response will give you an error for every

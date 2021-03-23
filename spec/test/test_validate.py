@@ -1,7 +1,8 @@
 """
 Tests for the schema validation functions
 
-These tests run within the re_api docker image, and require access to the ArangoDB image for validation of AQL strings.
+These tests run within the re_api docker image, and require access to the ArangoDB image
+for validation of AQL strings.
 """
 import unittest
 import os.path as os_path
@@ -46,15 +47,18 @@ class TestValidate(unittest.TestCase):
                 "err": ValueError,
             },
             {
-                "msg": "'http://json-schema.org/draft-07/schema#' is not of type 'object'",
+                "msg": "'http://json-schema.org/draft-07/schema#' is not of type "
+                "'object'",
                 "file": "schema_not_object.yaml",
             },
             {
-                "msg": r"Additional properties are not allowed \('title' was unexpected\)",
+                "msg": r"Additional properties are not allowed \('title' was "
+                r"unexpected\)",
                 "file": "extra_top_level_entries.yaml",
             },
             {
-                "msg": 'Time-travel edge schemas must require "from" and "to" attributes in ',
+                "msg": 'Time-travel edge schemas must require "from" and "to" '
+                "attributes in ",
                 "file": "edge_delta_missing_to_from.yaml",
             },
             {
@@ -116,7 +120,8 @@ class TestValidate(unittest.TestCase):
 
         error_list = [
             {
-                "msg": r"Additional properties are not allowed \('type' was unexpected\)",
+                "msg": r"Additional properties are not allowed \('type' was "
+                r"unexpected\)",
                 "file": "invalid_additional_property.json",
             },
             {

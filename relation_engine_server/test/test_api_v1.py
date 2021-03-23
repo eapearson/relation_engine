@@ -1,7 +1,8 @@
 """
 Simple integration tests on the API itself.
 
-These tests run within the re_api docker image, and require access to the ArangoDB, auth, and workspace images.
+These tests run within the re_api docker image, and require access to the ArangoDB,
+auth, and workspace images.
 """
 import unittest
 import requests
@@ -85,13 +86,15 @@ class TestApi(unittest.TestCase):
         """test a request to the server
 
         arguments:
-            url             url to be appended to API_URL (i.e. request will be made to API_URL + url)
+            url             url to be appended to API_URL (i.e. request will be made to
+                            API_URL + url)
             params          request parameters
             data            query data, encoded as JSON
             method          HTTP method; defaults to 'get'
             status_code     expected response status; defaults to 200
             resp_json       expected response content (JSON)
-            resp_test       a function to perform on the response to test that it is as expected
+            resp_test       a function to perform on the response to test that it is as
+                            expected
         """
 
         # this method should only be run from another test method
@@ -171,7 +174,9 @@ class TestApi(unittest.TestCase):
             self.assertIn(item, the_list)
 
     def test_list_collections(self):
-        """Test the listing out of registered collection schemas for vertices and edges."""
+        """
+        Test the listing out of registered collection schemas for vertices and edges.
+        """
         for variant in ["schemas", "collections"]:
 
             def check_resp_json_contains(self, resp):
@@ -185,9 +190,12 @@ class TestApi(unittest.TestCase):
     def test_list_data_sources(self):
         """test the data source listing endpoints"""
 
-        # there are two different data_sources endpoints that return very similar results
-        # /data_sources is used by the UI and requires slightly different response formatting
-        # /specs/data_sources is in the standard /specs format used by collections and stored_queries
+        # there are two different data_sources endpoints that return very similar
+        # results
+        # /data_sources is used by the UI and requires slightly different response
+        # formatting
+        # /specs/data_sources is in the standard /specs format used by collections and
+        # stored_queries
 
         data_sources = ["ncbi_taxonomy"]
 
@@ -784,7 +792,10 @@ class TestApi(unittest.TestCase):
         self.assertEqual(resp_json["results"][0]["ws_id"], ws_id)
 
     def test_auth_query_no_access(self):
-        """Test the case where we try to query a collection without the right workspace access."""
+        """
+        Test the case where we try to query a collection without the right workspace
+        access.
+        """
         # Remove all test vertices and create one with a ws_id
         requests.put(
             API_URL + "/documents",
@@ -819,7 +830,9 @@ class TestApi(unittest.TestCase):
         self.assertEqual(resp_json["count"], 0)
 
     def test_auth_query_invalid_token(self):
-        """Test the case where we try to authorize a query using an invalid auth token."""
+        """
+        Test the case where we try to authorize a query using an invalid auth token.
+        """
         requests.put(
             API_URL + "/documents",
             params={"overwrite": True, "collection": "test_vertex"},

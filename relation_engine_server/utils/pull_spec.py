@@ -62,7 +62,10 @@ def download_specs(
 
 
 def do_init_collections():
-    """Initialize any uninitialized collections in the database from a set of collection schemas."""
+    """
+    Initialize any uninitialized collections in the database from a set of collection
+    schemas.
+    """
     pattern = os.path.join(_CONF["spec_paths"]["collections"], "**", "*.yaml")
     for path in glob.iglob(pattern):
         coll_name = os.path.basename(os.path.splitext(path)[0])

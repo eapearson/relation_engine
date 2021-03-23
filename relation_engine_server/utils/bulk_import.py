@@ -20,7 +20,8 @@ def bulk_import(query_params):
     validator = get_schema_validator(schema_file=schema_file, validate_at="/schema")
     # We can't use a context manager here
     # We need to close the file to have the file contents readable
-    #  and we need to prevent deletion of the temp file on close (default behavior of tempfiles)
+    #  and we need to prevent deletion of the temp file on close (default behavior
+    #  of tempfiles)
     temp_fd = tempfile.NamedTemporaryFile(mode="a", delete=False)
     try:
         # Stream request data line-by-line

@@ -30,7 +30,9 @@ def server_status():
 def run_query(
     query_text=None, cursor_id=None, bind_vars=None, batch_size=10000, full_count=False
 ):
-    """Run a query using the arangodb http api. Can return a cursor to get more results."""
+    """
+    Run a query using the arangodb http api. Can return a cursor to get more results.
+    """
     url = _CONF["api_url"] + "/cursor"
     req_json = {
         "batchSize": min(5000, batch_size),
@@ -125,7 +127,8 @@ def _create_indexes(coll_name, config):
         if not resp.ok:
             raise RuntimeError(resp.text)
         print(
-            f'Successfully created {idx_type} index on {idx_conf["fields"]} for {coll_name}.'
+            f'Successfully created {idx_type} index on {idx_conf["fields"]} '
+            f"for {coll_name}."
         )
 
 

@@ -22,7 +22,10 @@ _VALID_SCHEMA_TYPES = _schema_types["singular"] + _schema_types["plural"]
 
 
 def _switch_schema_type_name(schema_type, to_form):
-    """switch a schema_type name to the `to_form` version, ensuring that the schema exists first"""
+    """
+    switch a schema_type name to the `to_form` version, ensuring that the schema exists
+    first
+    """
 
     # this schema type does not exist
     if schema_type not in _VALID_SCHEMA_TYPES:
@@ -67,7 +70,8 @@ def get_names(schema_type):
 def get_schema(schema_type, name, path_only=False):
     """
     Get content or file path for a named schema of specified schema_type.
-    If path_only is true, the file path is returned; if not, the file contents are returned.
+    If path_only is true, the file path is returned; if not, the file contents are
+    returned.
 
     Throws a SchemaNonexistent error if the named schema does not exist.
     """
@@ -97,7 +101,8 @@ def get_schema(schema_type, name, path_only=False):
             contents = yaml.safe_load(fd)
 
         if schema_search_type == "data_sources" and "logo_path" in contents:
-            # Append the logo root url to be the ui-assets server url with the correct environment
+            # Append the logo root url to be the ui-assets server url with the correct
+            # environment
             base_logo_url = re.sub(
                 r"\/services\/?", "/ui-assets", _CONF["kbase_endpoint"]
             )
@@ -128,7 +133,10 @@ def get_view_names():
 
 
 def get_collection(name, path_only=False):
-    """Get YAML content (or file path) for a specific collection. Throws an error if nonexistent."""
+    """
+    Get YAML content (or file path) for a specific collection. Throws an error if
+    nonexistent.
+    """
     return get_schema("collection", name, path_only)
 
 
@@ -139,12 +147,18 @@ def get_schema_for_doc(doc_id, path_only=False):
 
 
 def get_data_source(name, path_only=False):
-    """Get YAML content (or file path) for a data source. Throws an error if it does not exist."""
+    """
+    Get YAML content (or file path) for a data source. Throws an error if it does not
+    exist.
+    """
     return get_schema("data_source", name, path_only)
 
 
 def get_stored_query(name, path_only=False):
-    """Get AQL content or file path for a specific stored query. Throws an error if nonexistent."""
+    """
+    Get AQL content or file path for a specific stored query. Throws an error if
+    nonexistent.
+    """
     return get_schema("stored_query", name, path_only)
 
 

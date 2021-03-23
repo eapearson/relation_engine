@@ -208,7 +208,8 @@ class TestSpecLoader(unittest.TestCase):
 
     def test_prevent_non_spec_dir_access(self):
         """
-        Ensure that matching files in directories outside the designated spec repo cannot be retrieved
+        Ensure that matching files in directories outside the designated spec repo
+        cannot be retrieved
         """
 
         # this query is OK as the file is still in the spec repo
@@ -223,7 +224,8 @@ class TestSpecLoader(unittest.TestCase):
             ),
         )
 
-        # this matches a file in one of the other test data dirs => should throw an error
+        # this matches a file in one of the other test data dirs => should throw an
+        # error
         path_outside_spec_repo = "../../../../data/collections/test_node"
         err_msg = f"Stored query '{path_outside_spec_repo}' does not exist"
         with self.assertRaisesRegex(SchemaNonexistent, err_msg):

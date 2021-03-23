@@ -2,7 +2,8 @@
 Tests for workspace stored queries under the ws* namespace
 
 
-These tests run within the re_api docker image, and require access to the ArangoDB, auth, and workspace images.
+These tests run within the re_api docker image, and require access to the ArangoDB,
+auth, and workspace images.
 """
 import unittest
 import json
@@ -87,7 +88,8 @@ class TestWs(unittest.TestCase):
     def test_fetch_related_data_valid(self):
         """
         Test for the basic happy path.
-        This also covers the case of private-scope object results, which will be hidden from results.
+        This also covers the case of private-scope object results, which will be hidden
+        from results.
         """
         resp = requests.post(
             _CONF["re_api_url"] + "/api/v1/query_results",

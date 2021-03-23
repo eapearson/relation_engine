@@ -9,7 +9,6 @@ set -e
 # Run code quality checks before tests; a failure here
 # will prevent the tests  from running.
 source_dirs="/app/relation_engine_server /app/client_src /app/spec"
-black $source_dirs
 flake8 --max-complexity 20 $source_dirs
 mypy --ignore-missing-imports $source_dirs
 bandit -r $source_dirs

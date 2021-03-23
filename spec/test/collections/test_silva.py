@@ -28,7 +28,9 @@ class SILVATreeJSONSchemaTest(unittest.TestCase):
 
         cls.nodes_valid = [
             {
-                "id": "0",  # Root's info is assigned by API, since SILVA doesn't seem to have a root node
+                # Root's info is assigned by API, since SILVA doesn't seem to have a
+                # root node
+                "id": "0",
                 "name": "Root",
                 "rank": "root_rank",
             },
@@ -179,11 +181,13 @@ class SILVATreeJSONSchemaTest(unittest.TestCase):
                     "name": "name",
                     "rank": "fictional_rank",
                 },
-                "'fictional_rank' is not one of ['superfamily', 'subphylum', 'subfamily', "
-                + "'phylum', 'order', 'major_clade', 'infraclass', 'suborder', 'family', "
-                + "'superkingdom', 'domain', 'superphylum', 'superorder', 'superclass', "
-                + "'infraphylum', 'subclass', 'genus', 'class', 'kingdom', 'subkingdom', "
-                + "'root_rank', 'sequence']",
+                (
+                    "'fictional_rank' is not one of ['superfamily', 'subphylum', "
+                    "'subfamily', 'phylum', 'order', 'major_clade', 'infraclass', "
+                    "'suborder', 'family', 'superkingdom', 'domain', 'superphylum', "
+                    "'superorder', 'superclass', 'infraphylum', 'subclass', 'genus', "
+                    "'class', 'kingdom', 'subkingdom', 'root_rank', 'sequence']"
+                ),
             ),
             (
                 {
@@ -193,7 +197,8 @@ class SILVATreeJSONSchemaTest(unittest.TestCase):
                     "rank": "superclass",
                     "dataset": ["nr99", "ref", "parc"],  # array in wrong order
                 },
-                "['nr99', 'ref', 'parc'] is not one of [['parc'], ['parc', 'ref'], ['parc', 'ref', 'nr99']]",
+                "['nr99', 'ref', 'parc'] is not one of [['parc'], ['parc', 'ref'], "
+                "['parc', 'ref', 'nr99']]",
             ),
         ]
 

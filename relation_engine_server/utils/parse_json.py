@@ -5,7 +5,8 @@ import flask
 def get_json_body():
     """
     Parse json out of a request body, if present.
-    If the request body is empty, we return None rather than throwing any parsing errors.
+    If the request body is empty, we return None rather than throwing any parsing
+    errors.
     """
     json_body = None  # type: ignore
     req_data = flask.request.get_data()

@@ -18,3 +18,9 @@ coverage_report/
 
 # Spec archives
 spec.tar.gz
+
+# python virtual environment
+/venv/
+
+# ides
+/.idea/

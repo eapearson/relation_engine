@@ -16,8 +16,8 @@ api_v1 = flask.Blueprint("api_v1", __name__)
 
 @api_v1.route("/data_sources", methods=["GET"])
 def list_data_sources():
-    # note the custom response format is used by the frontend, so this endpoint is provided
-    # in addition to the /specs/data_sources endpoint
+    # note the custom response format is used by the frontend,
+    # so this endpoint is provided in addition to the /specs/data_sources endpoint
 
     data_sources = spec_loader.get_names("data_sources")
     return flask.jsonify({"data_sources": data_sources})
@@ -53,7 +53,10 @@ def show_stored_queries():
 @api_v1.route("/specs/collections", methods=["GET"])
 @api_v1.route("/specs/schemas", methods=["GET"])
 def show_collections():
-    """Show the names of the (document) collections (edges and vertices) loaded from the spec."""
+    """
+    Show the names of the (document) collections (edges and vertices)
+    loaded from the spec.
+    """
     name = flask.request.args.get("name")
     doc_id = flask.request.args.get("doc_id")
     if name:

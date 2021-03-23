@@ -52,7 +52,8 @@ def wait_for_service(service_list: List[str]) -> None:
                 print(f"Still waiting for {name} to start at {conf['url']}...")
                 if int(time.time()) > timeout:
                     raise RuntimeError(
-                        f"Timed out waiting for {name} to start at {conf['url']} with error: {err}"
+                        f"Timed out waiting for {name} to start at '"
+                        f"{conf['url']} with error: {err}"
                     )
                 still_pending.add(name)
                 time.sleep(3)

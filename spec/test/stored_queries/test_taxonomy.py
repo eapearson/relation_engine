@@ -1,7 +1,8 @@
 """
 Tests for the ncbi taxonomy stored queries.
 
-These tests run within the re_api docker image, and require access to the ArangoDB, auth, and workspace images.
+These tests run within the re_api docker image, and require access to the ArangoDB,
+auth, and workspace images.
 """
 import json
 import time
@@ -390,7 +391,9 @@ class TestTaxonomy(unittest.TestCase):
         self.assertEqual(resp["results"][0]["total_count"], 0)
 
     def test_search_sciname_wrong_type(self):
-        """Test a query to search sciname with the wrong type for the search_text param."""
+        """
+        Test a query to search sciname with the wrong type for the search_text param.
+        """
         resp = requests.post(
             _CONF["re_api_url"] + "/api/v1/query_results",
             params={"stored_query": "taxonomy_search_sci_name"},
@@ -571,7 +574,8 @@ class TestTaxonomy(unittest.TestCase):
     def test_get_associated_objs(self):
         """
         Test a valid query to get associated objects for a taxon.
-        Two objects are public and one is private, so total_count will be 3 while only the public objects are returned.
+        Two objects are public and one is private, so total_count will be 3 while only
+        the public objects are returned.
         """
         resp = requests.post(
             _CONF["re_api_url"] + "/api/v1/query_results",
@@ -779,7 +783,8 @@ def _create_delta_test_docs(coll_name, docs, edge=False):
     """Add in delta required fields."""
     if edge:
         for doc in docs:
-            # Replicate the time-travel system by just setting 'from' and 'to' to the keys
+            # Replicate the time-travel system by just setting 'from' and 'to' to the
+            # keys
             doc["from"] = doc["_from"].split("/")[1]
             doc["to"] = doc["_to"].split("/")[1]
     else:
